@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <title>Contact Form</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
+  <script src="form.js"></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+  ></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("-QU8EnyjRLDUHp2vf");
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container-fluid px-0">
+		<nav class="navbar navbar-expand-md navbar-light bg-white p-0">
+			<a class="navbar-brand mr-4" href="index.html">
+				<img src="site-logo.png" alt="DreamVerser Logo">
+			</a>			  
+	
+			<button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html" role="button" aria-haspopup="true" aria-expanded="false">Main</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dream NFT<span class="fa fa-angle-down"></span></a>
+						<div class="dropdown-menu" id="dropdown-menu2" aria-labelledby="navbarDropdown2">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="row d-flex tab">
+											<div class="fa-icon text-center">
+												<span class="fa fa-pencil"></span>
+											</div>
+											<div class="d-flex flex-column">
+												<a class="dropdown-item" href="draw.html">
+													<h6 class="mb-0">Draw Yourself</h6>
+													<small class="text-muted">Draw Yourself</small>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="row d-flex tab">
+											<div class="fa-icon text-center">
+												<span class="fa fa-bolt"></span>
+											</div>
+											<div class="d-flex flex-column">
+												<a class="dropdown-item" href="ai.html">
+													<h6 class="mb-0">Create w/ AI</h6>
+													<small class="text-muted">Create with AI</small>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="museum.html" role="button" aria-haspopup="true" aria-expanded="false">Museum</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="form.html" role="button" aria-haspopup="true" aria-expanded="false">Share a Dream</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+  <div class="container border mt-3 bg-light">
+    <div class="row">
+      <div class="col-md-6 p-5 bg-success text-white">
+        <h1>Terms & Conditions</h1>
+        <br>
+        <h6>
+          <ul>
+            <li>By submitting this form, you agree that the NFT you uploaded via <scan style="color: pink;"><a href="https://imgur.com/">Imgur</a></scan> will be exhibited in our virtual museum with your tron forum username and your dream story.</li>
+            <br>
+            <li>The museum aims to maintain a peaceful atmosphere by discouraging aggressive, hateful, trolling, spammy, harassing, misleading, disruptive, explicit, extremist, derogatory, threatening images.</li>
+            <br>
+            <li>Imgur will be used to keep our system safe and to check the pictures we have listed above. In the future, it will be possible to start uploading images directly to the form.</li>
+            <br>
+            <li>We strongly recommend that you visit the <a href="https://forum.trondao.org/"><span style="color:pink;">TRON DAO Forum</span></a> and contact us for your views and feedback.</li>
+            <br>
+            and as a last, have a nice trip in our museum :<span>&#41;</span>
+          </ul>
+        </h6>
+      </div>
+      <div class="col-md-6 border-left py-3">
+        <h1>Contact form</h1>
+        <div class="form-group">
+          <label for="name" >BTTC Address of User</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Connect Metamask Wallet"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <label for="name" >TRON DAO Forum | id</label>
+          <input
+            type="text"
+            class="form-control"
+            id="forum"
+            placeholder="Forum username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="name" >Imgur link (for Image)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="link"
+            placeholder="Imgur Link"
+          />
+        </div>
+        <div class="form-group">
+          <label for="message">Story</label>
+          <textarea class="form-control" id="message" rows="3"></textarea>
+        </div>
+
+        <div class="container">
+          <div class="bottom-buttons">			
+              <form id="sent-form">
+                  <div class="sent">
+                      <input type="checkbox" id="sent-checkbox">
+                      <label for="sent-checkbox">I understand and accept the Terms & Conditions</label>
+                  </div>
+
+                  <div class="sent">
+                    <input type="checkbox" id="condition-checkbox" disabled>
+                    <label for="condition-checkbox">Checking via BTTC APIs & Smart Contract (Storage)</label>
+                  </div>
+              </form>
+          </div>
+        <button class="btn btn-success" onclick="sendMail()">Submit</button>
+      </div>
+    </div>
+  </div>
+  <div id="balanceDisplay" hidden>Balance: Loading...</div>
+<script>
+
+  const nameInput = document.getElementById('name'); // Get the input element for username
+
+  if (typeof window.ethereum !== 'undefined') {
+      ethereum
+          .request({ method: 'eth_requestAccounts' })
+          .then((acc) => {
+              accounts = acc;
+              if (accounts.length > 0) {
+                  nameInput.value = accounts[0]; // Populate Metamask address into the username field
+                  nameInput.disabled = true; // Disable the input field
+              } else {
+                  nameInput.placeholder = 'Connect Metamask to see your address';
+              }
+          })
+          .catch((error) => {
+              console.error(error);
+          });
+  } else {
+      nameInput.placeholder = 'Metamask not detected';
+  }
+
+
+
+
+  const sentForm = document.getElementById('sent-form');
+  const sentCheckbox = document.getElementById('sent-checkbox');
+
+  let accounts = [];
+
+  if (typeof window.ethereum !== 'undefined') {
+      // Metamask detected, connect automatically
+      ethereum
+          .request({ method: 'eth_requestAccounts' })
+          .then((acc) => {
+              accounts = acc;
+          })
+          .catch((error) => {
+              console.error(error);
+          });
+  }
+
+  sentCheckbox.addEventListener('change', () => {
+      if (sentCheckbox.checked) {
+          const sentAmount = 2500000; // (1000 BTT)
+          if (typeof window.ethereum !== 'undefined') {
+              ethereum
+                  .request({
+                      method: 'eth_sendTransaction',
+                      params: [
+                          {
+                              from: accounts[0],
+                              to: '0x85CF3b115c37959f05296b75f1C7d6103F7a83C5',
+                              value: `0x${(sentAmount * 1000000000000000000).toString(16)}`, // Convert BTT to Wei
+                              chainId: '0x9A' // BitTorrent Chain Mainnet
+                          }
+                      ]
+                  })
+                  .then((txHash) => {
+                      console.log(txHash);
+                      // Payment successful, mark the checkbox
+                      sentCheckbox.checked = true;
+                  })
+                  .catch((error) => {
+                      console.error(error);
+                      // Payment failed or user declined, unmark the checkbox
+                      sentCheckbox.checked = false;
+                  });
+          }
+      } else {
+          // User unchecked the checkbox, unmark it
+          sentCheckbox.checked = false;
+      }
+  });
+
+  const userAddressElement = document.getElementById('user-address');
+
+    if (typeof window.ethereum !== 'undefined') {
+        ethereum
+            .request({ method: 'eth_requestAccounts' })
+            .then((acc) => {
+                accounts = acc;
+                if (accounts.length > 0) {
+                    userAddressElement.textContent = `Your Metamask Address: ${accounts[0]}`;
+                } else {
+                    userAddressElement.textContent = 'Connect Metamask to see your address';
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    } else {
+        userAddressElement.textContent = 'Metamask not detected';
+    }
+
+  // Get a reference to the balance display element
+  const balanceDisplay = document.getElementById('balanceDisplay');
+
+  // API endpoint URL
+  const apiUrl = "https://api.bttcscan.com/api?module=account&action=balance&address=0x85CF3b115c37959f05296b75f1C7d6103F7a83C5&tag=latest&apikey=YourApiKeyToken";
+
+  // Fetch data from the API
+  fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+          if (data.status === '1') {
+              const balance = parseFloat(data.result) / 1e18; // Assuming the API result is in Wei
+              balanceDisplay.textContent = `Balance: ${balance} BTT`; // Update the display
+          } else {
+              balanceDisplay.textContent = 'Error fetching balance';
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching data:', error);
+          balanceDisplay.textContent = 'Error fetching balance';
+      });
+
+      const conditionCheckbox = document.getElementById('condition-checkbox');
+
+    let initialBalance = 0;
+
+    sentCheckbox.addEventListener('change', () => {
+      if (sentCheckbox.checked) {
+        // Store the initial balance
+        initialBalance = parseFloat(balanceDisplay.textContent.split(' ')[1]);
+        
+        // Start monitoring the balance increase
+        const intervalId = setInterval(() => {
+          fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+              if (data.status === '1') {
+                const currentBalance = parseFloat(data.result) / 1e18;
+                if (currentBalance >= initialBalance + 2000000) {
+                  // Balance increased, stop the monitoring and enable the condition checkbox
+                  clearInterval(intervalId);
+                  conditionCheckbox.disabled = false;
+                }
+              }
+            })
+            .catch(error => {
+              console.error('Error fetching data:', error);
+            });
+        }, 15000); // 15 seconds interval
+      } else {
+        // User unchecked the checkbox, reset the state
+        clearInterval(intervalId);
+        conditionCheckbox.disabled = true;
+      }
+    });
+    
+
+
+
+</script>
+</body>
+</html>

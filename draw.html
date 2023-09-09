@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          margin: 0;
+        }
+      
+        #canvas-container {
+          max-width: 430px;
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 5px solid #000000;
+          margin-bottom: 30px;
+          background-color: white; /* Çizim alanı rengi */
+          overflow: hidden;
+        }
+      
+        #color-palette {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin: 44px;
+        }
+      
+        .color {
+          width: 30px;
+          height: 30px;
+          cursor: pointer;
+          border-radius: 50%;
+          opacity: 1;
+        }
+      
+        canvas {
+          width: auto;
+          height: auto;
+          touch-action: none;
+        }
+      
+        #controls {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            #canvas-container {
+                width: 82%;
+                max-height: 40vh;
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 5px solid #000000;
+                background-color: white; /* Çizim alanı rengi */
+                overflow: hidden;
+                margin: 30px;
+                }
+              
+              #color-palette {
+                margin: 30px;
+              }
+
+              .container-fluid{
+                position: absolute;
+                top: 0;
+              }
+
+              body {
+              display: flex;
+              height: 92vh;
+              margin: 0;
+            }
+        }
+
+
+    </style>
+    <title>DreamVerser</title>
+</head>
+<body>
+	<div class="container-fluid px-0">
+		<nav class="navbar navbar-expand-md navbar-light bg-white p-0">
+			<a class="navbar-brand mr-4" href="index.html">
+				<img src="site-logo.png" alt="DreamVerser Logo">
+			</a>			  
+	
+			<button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html" role="button" aria-haspopup="true" aria-expanded="false">Main</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dream NFT<span class="fa fa-angle-down"></span></a>
+						<div class="dropdown-menu" id="dropdown-menu2" aria-labelledby="navbarDropdown2">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="row d-flex tab">
+											<div class="fa-icon text-center">
+												<span class="fa fa-pencil"></span>
+											</div>
+											<div class="d-flex flex-column">
+												<a class="dropdown-item" href="draw.html">
+													<h6 class="mb-0">Draw Yourself</h6>
+													<small class="text-muted">Draw Yourself</small>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="row d-flex tab">
+											<div class="fa-icon text-center">
+												<span class="fa fa-bolt"></span>
+											</div>
+											<div class="d-flex flex-column">
+												<a class="dropdown-item" href="ai.html">
+													<h6 class="mb-0">Create w/ AI</h6>
+													<small class="text-muted">Create with AI</small>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="museum.html" role="button" aria-haspopup="true" aria-expanded="false">Museum</a>
+					</li>
+          <li class="nav-item">
+						<a class="nav-link" href="form.html" role="button" aria-haspopup="true" aria-expanded="false">Share a Dream</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+    <div id="color-palette">
+        <div class="color" style="background-color: red;"></div>
+        <div class="color" style="background-color: green;"></div>
+        <div class="color" style="background-color: blue;"></div>
+        <div class="color" style="background-color: yellow;"></div>
+        <div class="color" style="background-color: orange;"></div>
+        <div class="color" style="background-color: purple;"></div>
+        <div class="color" style="background-color: pink;"></div>
+        <div class="color" style="background-color: cyan;"></div>
+        <div class="color" style="background-color: black;"></div>
+        <div class="color" style="background-color: white;"></div>
+      </div>
+      <div id="canvas-container">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div id="controls">
+        <input type="range" id="brush-size-range" min="1" max="20" step="1" value="5">
+        <button id="eraser-button">Eraser</button>
+        <button id="fill-button">Fill</button>
+        <button id="download-button"><i class="fa fa-download"></i></button>
+      </div>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+  
+        // Canvas boyutunu belirli bir değere ayarla
+        const canvasSize = Math.min(window.innerWidth * 0.8, window.innerHeight * 0.6, 800); // Maksimum 800 piksel genişliğinde
+        canvas.width = canvasSize;
+        canvas.height = canvasSize;
+  
+        const colors = document.querySelectorAll('.color');
+        colors.forEach(color => {
+          color.addEventListener('click', () => {
+            context.strokeStyle = color.style.backgroundColor;
+          });
+        });
+  
+        let painting = false;
+  
+        function startPosition(e) {
+          painting = true;
+          draw(e);
+        }
+  
+        function endPosition() {
+          painting = false;
+          context.beginPath();
+        }
+  
+        function draw(e) {
+          if (!painting) return;
+          context.lineWidth = document.getElementById('brush-size-range').value;
+          context.lineCap = 'round';
+  
+          // Mobil cihazlarda dokunmatik koordinatları kullan
+          const x = e.touches ? e.touches[0].clientX : e.clientX;
+          const y = e.touches ? e.touches[0].clientY : e.clientY;
+  
+          context.lineTo(x - canvas.getBoundingClientRect().left, y - canvas.getBoundingClientRect().top);
+          context.stroke();
+          context.beginPath();
+          context.moveTo(x - canvas.getBoundingClientRect().left, y - canvas.getBoundingClientRect().top);
+        }
+  
+        canvas.addEventListener('mousedown', startPosition);
+        canvas.addEventListener('touchstart', startPosition);
+        canvas.addEventListener('mouseup', endPosition);
+        canvas.addEventListener('touchend', endPosition);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('touchmove', draw);
+  
+        const downloadButton = document.getElementById('download-button');
+        downloadButton.addEventListener('click', () => {
+          const link = document.createElement('a');
+          link.download = 'my_drawing.png';
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+  
+        const eraserButton = document.getElementById('eraser-button');
+        eraserButton.addEventListener('click', () => {
+          context.strokeStyle = 'white';
+        });
+  
+        const fillButton = document.getElementById('fill-button');
+        fillButton.addEventListener('click', () => {
+          context.fillStyle = context.strokeStyle;
+          context.fillRect(0, 0, canvas.width, canvas.height);
+        });
+    </script>
+</body>
+</html>

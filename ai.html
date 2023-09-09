@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>DreamVerser</title>
+	<style>
+        .card {
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: scale(1.05); /* Increase scale by 5% on hover */
+        }
+    </style>
+</head>
+<body>
+	<div class="container-fluid px-0">
+		<nav class="navbar navbar-expand-md navbar-light bg-white p-0">
+			<a class="navbar-brand mr-4" href="index.html">
+				<img src="site-logo.png" alt="DreamVerser Logo">
+			</a>			  
+	
+			<button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html" role="button" aria-haspopup="true" aria-expanded="false">Main</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dream NFT<span class="fa fa-angle-down"></span></a>
+						<div class="dropdown-menu" id="dropdown-menu2" aria-labelledby="navbarDropdown2">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="row d-flex tab">
+											<div class="fa-icon text-center">
+												<span class="fa fa-pencil"></span>
+											</div>
+											<div class="d-flex flex-column">
+												<a class="dropdown-item" href="draw.html">
+													<h6 class="mb-0">Draw Yourself</h6>
+													<small class="text-muted">Draw Yourself</small>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="row d-flex tab">
+											<div class="fa-icon text-center">
+												<span class="fa fa-bolt"></span>
+											</div>
+											<div class="d-flex flex-column">
+												<a class="dropdown-item" href="ai.html">
+													<h6 class="mb-0">Create w/ AI</h6>
+													<small class="text-muted">Create with AI</small>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="museum.html" role="button" aria-haspopup="true" aria-expanded="false">Museum</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="form.html" role="button" aria-haspopup="true" aria-expanded="false">Share a Dream</a>
+					</li>
+				
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div class="container-fluid px-0">
+        <!-- Navigation Bar (remains the same) -->
+        <!-- Four Boxes -->
+        <div class="container mt-5">
+            <div class="row">
+                <a href="https://www.canva.com/ai-image-generator/" class="col-md-6 mb-4">
+					<div class="card">
+						<img src="images/canva.png" class="card-img-top" alt="Box 1 Image">
+						<div class="card-body">
+							<h5 class="card-title">w/ Canva</h5>
+						</div>
+					</div>
+				</a>							
+				<a href="https://www.freepik.com/ai/image-generator/" class="col-md-6 mb-4">
+					<div class="card">
+						<img src="images/freepik.jpg" class="card-img-top" alt="Box 2 Image">
+						<div class="card-body">
+							<h5 class="card-title">w/ Freepik AI</h5>
+						</div>
+					</div>
+				</a>
+				
+				<a href="https://picsart.com/ai-image-generator/" class="col-md-6 mb-4">
+					<div class="card">
+						<img src="images/picsart.png" class="card-img-top" alt="Box 4 Image">
+						<div class="card-body">
+							<h5 class="card-title">w/ Picsart AI</h5>
+						</div>
+					</div>
+				</a>
+				
+				<a href="https://hotpot.ai/art-generator/" class="col-md-6 mb-4">
+					<div class="card">
+						<img src="images/hotpot.png" class="card-img-top" alt="Box 3 Image">
+						<div class="card-body">
+							<h5 class="card-title">w/ Hotpot.ai</h5>
+						</div>
+					</div>
+				</a>
+				
+                
+            </div>
+        </div>
+    </div>
+
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h6>We will share the artificial intelligence that we are developing with the OpenAI API when our budget is settled<br>
+					(For now, we've temporarily added links to other free AIs to help you make your dreams NFT)</h6>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
