@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="dreambook.css">
+    <title>DreamVerser</title>
+</head>
+<body>
+	<div class="container-fluid px-0">
+		<nav class="navbar navbar-expand-md navbar-light bg-white p-0">
+			<a class="navbar-brand mr-4" href="index.html">
+				<img src="site-logo.png" alt="DreamVerser Logo">
+			</a>			  
+	
+			<button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html" role="button" aria-haspopup="true" aria-expanded="false">Main</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dream NFT<span class="fa fa-angle-down"></span></a>
+						<div class="dropdown-menu" id="dropdown-menu2" aria-labelledby="navbarDropdown2">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="row d-flex tab">
+											<div class="fa-icon text-center">
+												<span class="fa fa-pencil"></span>
+											</div>
+											<div class="d-flex flex-column">
+												<a class="dropdown-item" href="draw.html">
+													<h6 class="mb-0">Draw Yourself</h6>
+													<small class="text-muted">Draw Yourself</small>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="row d-flex tab">
+											<div class="fa-icon text-center">
+												<span class="fa fa-bolt"></span>
+											</div>
+											<div class="d-flex flex-column">
+												<a class="dropdown-item" href="ai.html">
+													<h6 class="mb-0">Create w/ AI</h6>
+													<small class="text-muted">Create with AI</small>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="museum.html" role="button" aria-haspopup="true" aria-expanded="false">Museum</a>
+					</li>
+                    <li class="nav-item">
+						<a class="nav-link" href="dreambook.html" role="button" aria-haspopup="true" aria-expanded="false">DreamBook</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="form.html" role="button" aria-haspopup="true" aria-expanded="false">Share a Dream</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div class="container">
+	<br>
+	<h2 style="text-align: center;">100 Most Common Dreams</h2>	
+	</div>
+	
+	<div id="wrap">
+		<input type="text" id="inputFilter" class="filterinput" placeholder="Search Dream Here">
+		<ul id="list">
+			<li><strong>Food</strong>: Can symbolize nourishment, pleasure, or issues related to sustenance and appetite.</li>
+			<li><strong>Water</strong>: Emotions, with clear water symbolizing tranquility and muddy water signifying turmoil.</li>
+			<li><strong>Demons or Monsters</strong>: Often tied to fears, inner conflicts, or unresolved issues in your psyche.</li>
+			<li><strong>Money</strong>: Often relates to value, self-worth, or financial concerns in your waking life.</li>
+			<li><strong>Clothing</strong>: May represent self-expression, identity, or how you present yourself to others.</li>	
+			<li><strong>Buildings and Houses</strong>: Reflect aspects of the self, with different rooms or spaces representing different facets of your life.</li>
+			<li><strong>Killing People</strong>: May indicate feelings of aggression, power, or a desire to eliminate obstacles or challenges.</li>
+			<li><strong>Having Sex</strong>: Typically tied to intimate desires, relationships, or sexual concerns.</li>
+			<li><strong>Finding an Empty Room</strong>: Reflects unexplored potential, hidden aspects of self, or a desire for personal space.</li>
+			<li><strong>Your Most Secret Desire</strong>: Represents hidden desires, fantasies, or aspects of your inner self.</li>
+			<li><strong>Running in Place (Can't Move)</strong>: Often a sign of feeling stuck, lacking progress, or having limited mobility in life.</li>
+			<li><strong>Lots of Water (Flood)</strong>: Typically linked to overwhelming emotions, life challenges, or a sense of being inundated.</li>
+			<li><strong>Reenacting a Film</strong>: May reflect a desire to relive or reinterpret a particular experience or story in your life.</li>
+			<li><strong>Sleep Paralysis</strong>: Often a result of real-life physical sensations and stress, causing an inability to move or speak in a dream-like state.</li>
+			<li><strong>Snakes</strong>: Can symbolize hidden fears, transformation, or healing in dream interpretations.</li>
+			<li><strong>Falling</strong>: Can symbolize a loss of control, fear of failure, or a need to let go of something.</li>
+			<li><strong>Being Naked in Public</strong>: Often linked to feelings of vulnerability, exposure, or fear of judgment.</li>
+			<li><strong>Meeting Someone Famous</strong>: May represent aspirations, desires for recognition, or a need for validation.</li>
+			<li><strong>Being Cheated On (by Your Partner)</strong>: May reflect trust issues, insecurities, or concerns about your relationship.</li>
+			<li><strong>Being Late</strong>: Signifies anxiety, time pressure, or feeling unprepared in real-life situations.</li>
+			<li><strong>Being Lost</strong>: Suggests feelings of confusion, disorientation, or a lack of direction in life.</li>
+			<li><strong>A Car Crash</strong>: Often symbolizes a sudden, disruptive event or a collision of opposing forces.</li>
+			<li><strong>Being Pregnant (Girls)</strong>: Symbolic of new life, creativity, or a sense of responsibility.</li>
+			<li><strong>Vehicles</strong>: Life journey, with the type of vehicle representing different aspects of control and direction.</li>
+			<li><strong>Being Trapped</strong>: Feeling stuck or restricted in a situation, signifying a need for change or a sense of powerlessness.</li>
+			<li><strong>Teeth Falling Out</strong>: Commonly linked to concerns about appearance, communication, anxiety, or fear of loss.</li>
+			<li><strong>Babies</strong>: New beginnings, innocence, or a need for nurturing and care.</li>
+			<li><strong>Animals</strong>: Often symbolic of instincts, characteristics, or relationships, depending on the animal's nature.</li>
+			<li><strong>Being Chased</strong>: Feeling pursued by a threat or unresolved issue in your waking life.</li>
+			<li><strong>Death or Dying</strong>: Often symbolic of change, transformation, or fear of the unknown.</li>
+			<li><strong>Religious Symbols</strong>: Personal faith, spirituality, or moral beliefs may influence the interpretation.</li>
+			<li><strong>Taking Exams</strong>: A common symbol of stress, evaluation, or self-assessment in real-life situations.</li>
+			<li><strong>Spiders</strong>: Often related to creativity, feminine energy, or feeling entangled in a situation.</li>
+			<li><strong>Wasps or Hornets</strong>: May represent aggressive or irritating influences in your life.</li>
+			<li><strong>Dogs</strong>: Often associated with loyalty, friendship, or protection in dream symbolism.</li>
+			<li><strong>Wetting Yourself</strong>: Reflects feelings of embarrassment, insecurity, or a fear of losing control.</li>
+			<li><strong>Flying Like Superman</strong>: A symbol of freedom, empowerment, or a desire to overcome obstacles and rise above challenges.</li>
+			<li><strong>Fire</strong>: Often linked to passion, transformation, or a destructive force in dream interpretations.</li>
+			<li><strong>Reading Books</strong>: Represents knowledge, learning, or a desire for self-improvement.</li>
+			<li><strong>Ants Crawling on You</strong>: May symbolize feelings of irritation, being overwhelmed by details, or a sense of being "bugged."</li>	
+			<li><strong>Crying</strong>: Emotional release, catharsis, or pent-up feelings that need expression.</li>
+			<li><strong>Seeing a Dead Relative</strong>: Reflects feelings of loss, longing, or a desire for guidance from beyond.</li>
+			<li><strong>An Ex-Lover</strong>: Often symbolizes unresolved feelings, memories, or a need for closure in past relationships.</li>
+			<li><strong>Hiding from Something</strong>: Suggests avoidance, evading responsibilities, or escaping from a situation or emotions.</li>
+			<li><strong>Burglars in Your Home</strong>: May symbolize feelings of insecurity, invasion of privacy, or fear of loss.</li>
+			<li><strong>Being Stabbed</strong>: Signifies betrayal, feeling hurt or attacked, or a sense of vulnerability.</li>
+			<li><strong>Being Shot</strong>: Often linked to feelings of aggression, danger, or powerlessness in real-life situations.</li>
+			<li><strong>Horses</strong>: Can symbolize strength, freedom, or untamed aspects of the self, depending on the horse's behavior.</li>
+			<li><strong>Kissing Someone</strong>: Often associated with romance, affection, or a desire for intimacy.</li>
+			<li><strong>Jumping Really High</strong>: Reflects ambition, achieving goals, or a desire to overcome obstacles.</li>
+			<li><strong>Being Kidnapped</strong>: Suggests feeling trapped, controlled, or vulnerable in a situation.</li>
+			<li><strong>Missing a Bus or Flight</strong>: Often symbolizes a fear of missing out, time pressure, or feeling unprepared.</li>
+			<li><strong>Prison</strong>: Reflects feelings of confinement, guilt, or a sense of being trapped in real-life situations.</li>
+			<li><strong>Quitting a Job</strong>: Typically symbolizes change, freedom, or a desire for a new direction in your career.</li>
+			<li><strong>Running Away</strong>: May indicate avoidance, escape, or a desire to avoid responsibilities or confrontations.</li>
+			<li><strong>Being Super Rich</strong>: Often linked to desires for success, abundance, or the pursuit of wealth.</li>
+			<li><strong>Drowning</strong>: Reflects feelings of being overwhelmed, suffocated, or a fear of losing control.</li>
+			<li><strong>You’re on a Rollercoaster</strong>: Signifies excitement, ups and downs, or emotional fluctuations.</li>
+			<li><strong>Getting a Tattoo</strong>: Often symbolic of self-expression, individuality, or a desire for permanent change.</li>
+			<li><strong>Being Taken by Aliens</strong>: Reflects feelings of powerlessness, fear of the unknown, or a sense of being studied or examined.</li>
+			<li><strong>Someone Has a Message</strong>: May suggest a need for communication, a message from your subconscious, or a desire for guidance.</li>
+			<li><strong>Being Sexual in Public</strong>: Often relates to desires, exposure, or a fear of being judged or shamed.</li>
+			<li><strong>Searching for Something</strong>: Suggests a quest for answers, meaning, or a desire to find something important in your life.</li>
+			<li><strong>Climbing a Mountain</strong>: Signifies overcoming challenges, reaching new heights, or personal growth.</li>
+			<li><strong>Falling in Love</strong>: Often linked to romantic desires, emotional connections, or a deepening relationship.</li>
+			<li><strong>Showering</strong>: May represent cleansing, rejuvenation, or the need for self-care.</li>
+			<li><strong>Being Invisible</strong>: Reflects feelings of being unnoticed, overlooked, or a desire for anonymity.</li>
+			<li><strong>Losing a Shoe</strong>: Often symbolizes feeling unprepared, exposed, or a fear of being vulnerable in public.</li>
+			<li><strong>Talking to an Animal</strong>: May suggest a connection with nature, instincts, or a desire for understanding.</li>
+			<li><strong>Taking Drugs</strong>: Can reflect desires for altered states of consciousness, escape, or a need for coping mechanisms in your waking life.</li>
+			<li><strong>Eating Sharp Things</strong>: Often related to risk-taking behavior, impulsivity, or a desire for sensation.</li>
+			<li><strong>Seeing an Old Friend</strong>: Typically symbolizes nostalgia, a desire for connection, or a need for rekindling past relationships.</li>
+			<li><strong>Traveling Back in Time</strong>: Signifies reflection, revisiting the past, or a desire for second chances.</li>
+			<li><strong>Eating Rotten Food</strong>: May reflect disgust, feelings of being poisoned, or concerns about your well-being.</li>
+			<li><strong>Missing a Limb</strong>: Symbolizes a sense of loss, limitations, or a feeling of being incomplete.</li>
+			<li><strong>Secret Corridor or Room</strong>: Often linked to hidden aspects of the self, discoveries, or a desire for privacy and exploration.</li>
+			<li><strong>Lost in a Forest</strong>: Suggests feeling lost, confused, or a need to find your way in a complex situation.</li>
+			<li><strong>Lose in the Dark</strong>: Reflects uncertainty, fear of the unknown, or a lack of clarity in life.</li>
+			<li><strong>Zombies</strong>: May symbolize fears, feeling overwhelmed, or a sense of being pursued by relentless problems or stressors.</li>
+			<li><strong>Stuck in Mud or Concrete</strong>: Signifies feeling immobilized, trapped, or unable to make progress.</li>
+			<li><strong>Public Speaking</strong>: Often associated with fear of judgment, self-expression, or concerns about being in the spotlight.</li>
+			<li><strong>Committing a Crime</strong>: Suggests guilt, wrongdoing, or a sense of moral conflict in your waking life.</li>
+			<li><strong>Meeting Someone Famous</strong>: May represent aspirations, desires for recognition, or a need for validation.</li>
+			<li><strong>Natural Disaster</strong>: Often related to feeling out of control, fear of chaos, or a need to adapt to challenging circumstances.</li>
+			<li><strong>Pressing the Wrong Button</strong>: Reflects concerns about making mistakes, unintended consequences, or a desire for precision.</li>
+			<li><strong>Having an Argument</strong>: Signifies conflicts, disagreements, or unresolved issues in your waking life.</li>
+			<li><strong>Becoming Wealthy</strong>: Often linked to desires for success, abundance, or financial security.</li>
+			<li><strong>Childhood Home</strong>: Symbolizes memories, nostalgia, or a desire for a sense of security and familiarity.</li>
+			<li><strong>Being Really Ill</strong>: Reflects health concerns, vulnerability, or a need for self-care and healing.</li>
+			<li><strong>Laughing at Something</strong>: May represent joy, amusement, or a desire for lightheartedness in life.</li>
+			<li><strong>Being Embarrassed in Public</strong>: Often associated with feelings of self-consciousness, shame, or fear of judgment.</li>
+			<li><strong>Death of a Pet</strong>: Signifies loss, grief, or a need for emotional support and comfort.</li>
+			<li><strong>Losing Your Phone</strong>: Reflects a fear of disconnection, communication issues, or a sense of being disconnected.</li>
+			<li><strong>Higher Message</strong>: May suggest spiritual insights, guidance, or a connection to the divine.</li>
+			<li><strong>Predicting the Future</strong>: Reflects a desire for foresight, understanding, or a need to plan ahead in your life.</li>
+			<li><strong>Eating Sweet Things</strong>: Often linked to desires for pleasure, indulgence, or a need for comfort.</li>
+			<li><strong>‘They’re Always Like That’</strong>: Signifies a recurring pattern, expectations, or a need to address consistent behavior in others.</li>
+			<li><strong>Playing an Instrument</strong>: Symbolizes creativity, self-expression, or a desire for harmony and music in your life.</li>
+			<li><strong>Being Born</strong>: Reflects new beginnings, fresh starts, or a rebirth in some aspect of your life.</li>
+			<li><strong>Lucid Dreaming</strong>: Awareness within a dream, often associated with control, self-awareness, and the ability to shape dream content.</li>
+		</ul>
+	</div>
+  
+  
+  
+
+	<script src="dreambook.js"></script>
+</body>
+</html>

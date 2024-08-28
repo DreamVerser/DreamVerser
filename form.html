@@ -12,7 +12,7 @@
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    integrity="sha384-Gn5384xQq1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous"
   />
   <script src="form.js"></script>
@@ -80,6 +80,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="museum.html" role="button" aria-haspopup="true" aria-expanded="false">Museum</a>
 					</li>
+          <li class="nav-item">
+						<a class="nav-link" href="dreambook.html" role="button" aria-haspopup="true" aria-expanded="false">DreamBook</a>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="form.html" role="button" aria-haspopup="true" aria-expanded="false">Share a Dream</a>
 					</li>
@@ -94,13 +97,13 @@
         <br>
         <h6>
           <ul>
-            <li>By submitting this form, you agree that the NFT you uploaded via <scan style="color: pink;"><a href="https://imgur.com/">Imgur</a></scan> will be exhibited in our virtual museum with your tron forum username and your dream story.</li>
+            <li>By submitting this form, you agree that the NFT you uploaded via <scan style="color: pink;"><a href="https://imgur.com/">Imgur</a></scan> will be exhibited in our virtual museum with your name, surname and your dream story.</li>
             <br>
             <li>The museum aims to maintain a peaceful atmosphere by discouraging aggressive, hateful, trolling, spammy, harassing, misleading, disruptive, explicit, extremist, derogatory, threatening images.</li>
             <br>
             <li>Imgur will be used to keep our system safe and to check the pictures we have listed above. In the future, it will be possible to start uploading images directly to the form.</li>
             <br>
-            <li>We strongly recommend that you visit the <a href="https://forum.trondao.org/"><span style="color:pink;">TRON DAO Forum</span></a> and contact us for your views and feedback.</li>
+            <li>We strongly recommend that you visit the <a href="https://dorahacks.io/hackathon/educhain/buidl"><span style="color:pink;">EDU Chain Hackathon</span></a> and contact us for your views and feedback.</li>
             <br>
             and as a last, have a nice trip in our museum :<span>&#41;</span>
           </ul>
@@ -109,7 +112,7 @@
       <div class="col-md-6 border-left py-3">
         <h1>Contact form</h1>
         <div class="form-group">
-          <label for="name" >BTTC Address of User</label>
+          <label for="name" >EDU Chain;</label>
           <input
             type="text"
             class="form-control"
@@ -119,12 +122,12 @@
           />
         </div>
         <div class="form-group">
-          <label for="name" >TRON DAO Forum | id</label>
+          <label for="name" >Name Surname</label>
           <input
             type="text"
             class="form-control"
             id="forum"
-            placeholder="Forum username"
+            placeholder="N. S."
           />
         </div>
         <div class="form-group">
@@ -137,7 +140,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="message">Story</label>
+          <label for="message">Story of the Dream NFT</label>
           <textarea class="form-control" id="message" rows="3"></textarea>
         </div>
 
@@ -151,7 +154,7 @@
 
                   <div class="sent">
                     <input type="checkbox" id="condition-checkbox" disabled>
-                    <label for="condition-checkbox">Checking via BTTC APIs & Smart Contract (Storage)</label>
+                    <label for="condition-checkbox">Checking via EDU Chain APIs & Smart Contract (Storage)</label>
                   </div>
               </form>
           </div>
@@ -160,6 +163,7 @@
     </div>
   </div>
   <div id="balanceDisplay" hidden>Balance: Loading...</div>
+
 <script>
 
   const nameInput = document.getElementById('name'); // Get the input element for username
@@ -183,13 +187,11 @@
       nameInput.placeholder = 'Metamask not detected';
   }
 
-
-
-
   const sentForm = document.getElementById('sent-form');
   const sentCheckbox = document.getElementById('sent-checkbox');
-
+  const conditionCheckbox = document.getElementById('condition-checkbox');
   let accounts = [];
+  let intervalId; // Store interval ID globally to manage it across functions
 
   if (typeof window.ethereum !== 'undefined') {
       // Metamask detected, connect automatically
@@ -205,7 +207,7 @@
 
   sentCheckbox.addEventListener('change', () => {
       if (sentCheckbox.checked) {
-          const sentAmount = 2500000; // (1000 BTT)
+          const sentAmount = 0.04; // (0.04 EDU)
           if (typeof window.ethereum !== 'undefined') {
               ethereum
                   .request({
@@ -213,16 +215,16 @@
                       params: [
                           {
                               from: accounts[0],
-                              to: '0x85CF3b115c37959f05296b75f1C7d6103F7a83C5',
-                              value: `0x${(sentAmount * 1000000000000000000).toString(16)}`, // Convert BTT to Wei
-                              chainId: '0x9A' // BitTorrent Chain Mainnet
+                              to: '0xe673c70F6Fe94f7D6F578c4D3FF69c586319d289',
+                              value: `0x${(sentAmount * 1e18).toString(16)}`, // Convert EDU to Wei
+                              chainId: '0xA045C' // EDU Chain Mainnet
                           }
                       ]
                   })
                   .then((txHash) => {
                       console.log(txHash);
-                      // Payment successful, mark the checkbox
-                      sentCheckbox.checked = true;
+                      // Payment successful, start checking the transaction
+                      intervalId = setInterval(checkTransactionStatus, 5000, txHash);
                   })
                   .catch((error) => {
                       console.error(error);
@@ -231,90 +233,45 @@
                   });
           }
       } else {
-          // User unchecked the checkbox, unmark it
+          // User unchecked the checkbox, reset the state
           sentCheckbox.checked = false;
+          clearInterval(intervalId);
+          conditionCheckbox.disabled = true;
       }
   });
 
-  const userAddressElement = document.getElementById('user-address');
+  // Function to check the transaction status
+  async function checkTransactionStatus(txHash) {
+      const baseUrl = 'https://opencampus-codex.blockscout.com/api?';
+      const apiParams = `module=transaction&action=gettxreceiptstatus&txhash=${txHash}`;
 
-    if (typeof window.ethereum !== 'undefined') {
-        ethereum
-            .request({ method: 'eth_requestAccounts' })
-            .then((acc) => {
-                accounts = acc;
-                if (accounts.length > 0) {
-                    userAddressElement.textContent = `Your Metamask Address: ${accounts[0]}`;
-                } else {
-                    userAddressElement.textContent = 'Connect Metamask to see your address';
-                }
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    } else {
-        userAddressElement.textContent = 'Metamask not detected';
-    }
-
-  // Get a reference to the balance display element
-  const balanceDisplay = document.getElementById('balanceDisplay');
-
-  // API endpoint URL
-  const apiUrl = "https://api.bttcscan.com/api?module=account&action=balance&address=0x85CF3b115c37959f05296b75f1C7d6103F7a83C5&tag=latest&apikey=YourApiKeyToken";
-
-  // Fetch data from the API
-  fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-          if (data.status === '1') {
-              const balance = parseFloat(data.result) / 1e18; // Assuming the API result is in Wei
-              balanceDisplay.textContent = `Balance: ${balance} BTT`; // Update the display
-          } else {
-              balanceDisplay.textContent = 'Error fetching balance';
+      try {
+          const response = await fetch(`${baseUrl}${apiParams}`);
+          if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
           }
-      })
-      .catch(error => {
-          console.error('Error fetching data:', error);
-          balanceDisplay.textContent = 'Error fetching balance';
-      });
+          const data = await response.json();
 
-      const conditionCheckbox = document.getElementById('condition-checkbox');
-
-    let initialBalance = 0;
-
-    sentCheckbox.addEventListener('change', () => {
-      if (sentCheckbox.checked) {
-        // Store the initial balance
-        initialBalance = parseFloat(balanceDisplay.textContent.split(' ')[1]);
-        
-        // Start monitoring the balance increase
-        const intervalId = setInterval(() => {
-          fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-              if (data.status === '1') {
-                const currentBalance = parseFloat(data.result) / 1e18;
-                if (currentBalance >= initialBalance + 2000000) {
-                  // Balance increased, stop the monitoring and enable the condition checkbox
-                  clearInterval(intervalId);
-                  conditionCheckbox.disabled = false;
-                }
-              }
-            })
-            .catch(error => {
-              console.error('Error fetching data:', error);
-            });
-        }, 15000); // 15 seconds interval
-      } else {
-        // User unchecked the checkbox, reset the state
-        clearInterval(intervalId);
-        conditionCheckbox.disabled = true;
+          if (data.result.status === '1') {
+              console.log('Transaction confirmed!');
+              clearInterval(intervalId); // Stop checking the transaction
+              conditionCheckbox.disabled = false; // Enable the second checkbox
+          }
+      } catch (error) {
+          console.error('Failed to fetch transaction status:', error);
       }
+  }
+</script>
+<script>
+  fetch('smart-contract.js')
+    .then(response => response.text())
+    .then(scriptContent => {
+      // Execute the fetched script content
+      eval(scriptContent);
+    })
+    .catch(error => {
+      console.error('Error fetching script:', error);
     });
-    
-
-
-
 </script>
 </body>
 </html>

@@ -37,7 +37,19 @@
           gap: 10px;
           margin: 44px;
         }
-      
+        
+                /* Change the color of the size input slider to green */
+        #brush-size-range::-webkit-slider-thumb {
+          background: green;
+        }
+
+        /* Change the color of the size input slider to green for Firefox */
+        #brush-size-range::-moz-range-thumb {
+          background: green;
+        }
+
+
+
         .color {
           width: 30px;
           height: 30px;
@@ -58,6 +70,11 @@
           gap: 10px;
         }
 
+        .cool-button {
+            background-color: black; /* A cooler blue color */
+            color: white;
+        }
+
         @media only screen and (max-width: 768px) {
             #canvas-container {
                 width: 82%;
@@ -73,7 +90,7 @@
                 }
               
               #color-palette {
-                margin: 30px;
+                margin: 20px;
               }
 
               .container-fluid{
@@ -87,6 +104,7 @@
               margin: 0;
             }
         }
+
 
 
     </style>
@@ -146,34 +164,37 @@
 						<a class="nav-link" href="museum.html" role="button" aria-haspopup="true" aria-expanded="false">Museum</a>
 					</li>
           <li class="nav-item">
+						<a class="nav-link" href="dreambook.html" role="button" aria-haspopup="true" aria-expanded="false">DreamBook</a>
+					</li>
+          <li class="nav-item">
 						<a class="nav-link" href="form.html" role="button" aria-haspopup="true" aria-expanded="false">Share a Dream</a>
 					</li>
 				</ul>
 			</div>
 		</nav>
 	</div>
-
+  
+  
     <div id="color-palette">
-        <div class="color" style="background-color: red;"></div>
-        <div class="color" style="background-color: green;"></div>
-        <div class="color" style="background-color: blue;"></div>
-        <div class="color" style="background-color: yellow;"></div>
-        <div class="color" style="background-color: orange;"></div>
-        <div class="color" style="background-color: purple;"></div>
-        <div class="color" style="background-color: pink;"></div>
-        <div class="color" style="background-color: cyan;"></div>
-        <div class="color" style="background-color: black;"></div>
-        <div class="color" style="background-color: white;"></div>
+      <input type="color"  id="color-picker" value="#000000"> 
+      <div>
+        <span><i class="fa fa-minus-square-o" style="font-size: 1.5em;"></i></span><input type="range"  id="brush-size-range" min="1" max="20" step="1" value="5">
+        <span><i class="fa fa-plus-square-o" style="font-size: 1.5em;"></i></span>
       </div>
+    </div>
+    
       <div id="canvas-container">
         <canvas id="canvas"></canvas>
       </div>
       <div id="controls">
-        <input type="range" id="brush-size-range" min="1" max="20" step="1" value="5">
-        <button id="eraser-button">Eraser</button>
-        <button id="fill-button">Fill</button>
-        <button id="download-button"><i class="fa fa-download"></i></button>
+        <button id="fill-button" class="cool-button">Fill</button>
+        <button id="undo-button" class="cool-button">Undo</button>
+        <button id="redo-button" class="cool-button">Redo</button>
+        <button id="eraser-button" class="cool-button">Eraser</button> 
+      <button id="clean-button" class="cool-button">Clean</button>     
+        <button id="download-button" class="cool-button"><i class="fa fa-download"></i></button>
       </div>
+        
     <script>
         const canvas = document.getElementById('canvas');
         const context = canvas.getContext('2d');
@@ -223,11 +244,19 @@
         canvas.addEventListener('touchend', endPosition);
         canvas.addEventListener('mousemove', draw);
         canvas.addEventListener('touchmove', draw);
+
+        // Get Color Picker Elements
+        const colorPicker = document.getElementById('color-picker');
+
+        colorPicker.addEventListener('input', () => {
+          context.strokeStyle = colorPicker.value;
+        });
+
   
         const downloadButton = document.getElementById('download-button');
         downloadButton.addEventListener('click', () => {
           const link = document.createElement('a');
-          link.download = 'my_drawing.png';
+          link.download = 'DreamVerser-NFT.png';
           link.href = canvas.toDataURL();
           link.click();
         });
@@ -241,6 +270,62 @@
         fillButton.addEventListener('click', () => {
           context.fillStyle = context.strokeStyle;
           context.fillRect(0, 0, canvas.width, canvas.height);
+        });
+
+        const undoStack = [];
+        const redoStack = [];
+
+        // Function to save the current canvas state
+        function saveCanvasState() {
+            const canvasState = canvas.toDataURL();
+            undoStack.push(canvasState);
+            redoStack.length = 0; // Clear the redo stack
+        }
+
+        // Function to undo the last action
+        function undo() {
+            if (undoStack.length > 1) {
+                redoStack.push(undoStack.pop()); // Move the current state to redo stack
+                const lastState = undoStack[undoStack.length - 1];
+                const img = new Image();
+                img.src = lastState;
+                img.onload = () => {
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    context.drawImage(img, 0, 0);
+                };
+            }
+        }
+
+        // Function to redo the undone action
+        function redo() {
+            if (redoStack.length > 0) {
+                const nextState = redoStack.pop();
+                const img = new Image();
+                img.src = nextState;
+                img.onload = () => {
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    context.drawImage(img, 0, 0);
+                    undoStack.push(nextState); // Move the state back to the undo stack
+                };
+            }
+        }
+
+        // Event listeners for undo and redo buttons
+        const undoButton = document.getElementById('undo-button');
+        undoButton.addEventListener('click', undo);
+
+        const redoButton = document.getElementById('redo-button');
+        redoButton.addEventListener('click', redo);
+
+        // Event listener to save the canvas state before drawing
+        canvas.addEventListener('mousedown', () => {
+            saveCanvasState();
+        });
+
+        const cleanButton = document.getElementById('clean-button');
+        cleanButton.addEventListener('click', () => {
+            context.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+            saveCanvasState(); // Save the cleared canvas state to undo stack
         });
     </script>
 </body>
