@@ -279,7 +279,7 @@ const contractABI = [
     }
   ] ;
 
-const contractAddress = '0x9936596b67d92eb9eac5b6983dad5246002711a3';
+const contractAddress = '0xAa033281cB3ba9973822C48F3F5A3436c5EF420A';
 
 const contract = new web3.eth.Contract(contractABI, contractAddress);
 
@@ -288,7 +288,7 @@ function sendDataToContract(name, forum, link, message) {
 
   
   contract.methods.yourContractMethod(/* Pass encoded data */)
-    .send({ from: accounts[0], value: web3.utils.toWei('1000', 'BTT'), gas: 300000 })
+    .send({ from: accounts[0], value: web3.utils.toWei('1000', 'EDU'), gas: 300000 })
     .on('transactionHash', function(hash) {
     })
     .on('receipt', function(receipt) {
